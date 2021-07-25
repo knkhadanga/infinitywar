@@ -126,14 +126,14 @@ public class Mics {
     https://www.youtube.com/watch?time_continue=135&v=Ns4LCeeOFS4
     https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
      */
-    static void longestIncreasingSubsequence(int[] array) {
-        if (array == null || array.length == 0) {
+    static void longestIncreasingSubsequence(int[] input) {
+        if (input == null || input.length == 0) {
             System.out.println("Length of continuous subseqence is 0");
             return;
         }
 
-        int max_length = 0;
-        int size = array.length;
+        int result = 0;
+        int size = input.length;
 
         //declare an array to hold the longest subsequence so far for each each element in array
         int[] dp = new int[size];
@@ -145,17 +145,17 @@ public class Mics {
         //less to it to calculate the longest subsequence
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < i; j++) { //start from 0 and compare till current element
-                if (array[i] > array[j]) {
+                if (input[i] > input[j]) {
                     //the max length of subsequence for current element could be current value
                     //or it is 1 more than the element which is being compared (array[j])
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
             //update the max length value
-            max_length = Math.max(dp[i], max_length);
+            result = Math.max(dp[i], result);
         }
 
-        System.out.println("Longest increasing subsequence length is " + max_length);
+        System.out.println("Longest increasing subsequence length is " + result);
     }
 
     /*
@@ -473,6 +473,7 @@ public class Mics {
     }
 
     /**
+     * Remove repetitive characters from the string.
      * Input: abccccdeeef Output: abdf
      * Question - https://www.youtube.com/watch?v=yJv_ltADGuA
      */
